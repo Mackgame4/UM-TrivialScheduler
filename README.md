@@ -14,7 +14,8 @@ A modern and lightweight scheduling app built with Vue 3 and Vite.
 - [Vue 3](https://vuejs.org/) - Progressive JavaScript Framework
 - [Vite](https://vitejs.dev/) - Fast and modern frontend tooling
 - [Pinia](https://pinia.vuejs.org/) - State management for Vue (used to emulate a real-time notification system and other features)
-- [ShadCN](https://ui.shadcn.dev/) - Beautiful and customizable UI components (using TailwindCSS)
+- [ShadCN](https://www.shadcn-vue.com/) - Beautiful and customizable UI components (using TailwindCSS)
+- [Vue-i18n](https://vue-i18n.intlify.dev/) - Internationalization (i18n) plugin for Vue
 
 ## 📦 Installation
 
