@@ -5,6 +5,21 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Mail } from 'lucide-vue-next'
 
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuth } from '@/stores/auth'
+
+const username = ref('')
+const router = useRouter()
+const auth = useAuth()
+
+const login = () => {
+    if (username.value) {
+        auth.login(username.value)
+        router.push('/dashboard')
+    }
+}
+
 defineEmits(['toggle-auth']);
 </script>
 
@@ -17,10 +32,10 @@ defineEmits(['toggle-auth']);
             </div>
         </CardHeader>
         <CardContent>
-        <div class="grid gap-5 mt-4 px-7">
+        <form class="grid gap-5 mt-4 px-7">
             <div class="grid gap-2">
                 <Label for="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" type="email" placeholder="m@example.com" required v-model="username" />
             </div>
             <div class="grid gap-2">
                 <div class="flex items-center">
@@ -31,9 +46,9 @@ defineEmits(['toggle-auth']);
             </div>
             <div class="grid gap-1.5">
                 <span class="mt-4 text-center text-sm">{{ $t('login.dontHaveAccount') }} <a href="#" class="underline" @click="$emit('toggle-auth')">Sign up</a></span>
-                <Button type="submit" class="w-full"><Mail class="w-4 h-4" /> Login</Button>
+                <Button type="submit" class="w-full" @click="login"><Mail class="w-4 h-4" /> Login</Button>
             </div>
-        </div>
+        </form>
         </CardContent>
     </Card>
 </template>

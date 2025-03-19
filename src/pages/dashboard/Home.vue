@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import Counter from '@/components/Counter.vue'
-import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import { useAuth } from '@/stores/auth'
+
+const auth = useAuth()
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const logout = () => {
+    auth.logout()
+    router.push('/')
+}
 </script>
 
 <template>
-    <Counter msg="Text" />
-    <LocaleSwitch />
-    <p>{{ $t('message.hello') }}</p>
-    <RouterView />
+    <div>
+        <p v-if="auth.user">Logged in as: {{ auth.user.name }}</p>
+        <button v-if="auth.user" @click="logout">Logout</button>
+    </div>
 </template>
