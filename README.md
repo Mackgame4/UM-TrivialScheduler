@@ -16,8 +16,14 @@ A modern and lightweight scheduling app built with Vue 3 and Vite.
 - [Pinia](https://pinia.vuejs.org/) - State management for Vue (used to emulate a real-time notification system and other features)
 - [ShadCN](https://www.shadcn-vue.com/) - Beautiful and customizable UI components (using TailwindCSS)
 - [Vue-i18n](https://vue-i18n.intlify.dev/) - Internationalization (i18n) plugin for Vue
+- [JSON Server](https://www.npmjs.com/package/json-server) - Fake REST API for development
+- [Vue Router](https://router.vuejs.org/) - Official router for Vue.jss
 
 ## 📦 Installation
+```sh
+# Install JSON Server globally
+npm install -g json-server
+```
 
 ```sh
 # Install dependencies

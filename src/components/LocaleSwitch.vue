@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { localeNames } from '@/main'
+import { localeNames } from '@/i18n'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import { localeNames } from '@/main'
         </select-->
         <Select v-model="$i18n.locale">
             <SelectTrigger>
-                <SelectValue :placeholder="$t('lname')" />
+                <SelectValue :placeholder="localeNames[$i18n.locale]">{{ localeNames[$i18n.locale] }}</SelectValue>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>

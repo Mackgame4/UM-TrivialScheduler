@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import LoginForm from '@/components/LoginForm.vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const loggedIn = true
+// If user not logged in, redirect to login page
+if (!loggedIn) {
+  router.push('/')
+}
 </script>
 
 <template>
-  <div class="flex h-screen w-full items-center justify-center px-4">
-    <LoginForm />
-  </div>
+  <RouterView />
 </template>

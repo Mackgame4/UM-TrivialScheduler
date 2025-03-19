@@ -23,15 +23,12 @@ defineEmits(['toggle-auth']);
                 <Input id="email" type="email" placeholder="m@example.com" required />
             </div>
             <div class="grid gap-2">
-                <div class="flex items-center">
-                    <Label for="password">Password</Label>
-                    <a href="#" class="ml-auto inline-block text-xs underline">{{ $t('login.forgotPassword') }}</a>
-                </div>
+                <Label for="password">Password</Label>
                 <Input id="password" type="password" placeholder="************" required />
             </div>
             <div class="grid gap-1.5">
-                <span class="mt-4 text-center text-sm">{{ $t('login.dontHaveAccount') }} <a href="#" class="underline" @click="$emit('toggle-auth')">Sign up</a></span>
-                <Button type="submit" class="w-full"><Mail class="w-4 h-4" /> Login</Button>
+                <span class="mt-4 text-center text-sm">{{ $t('login.alreadyHaveAccount') }} <a href="#" class="underline" @click="$emit('toggle-auth')">Login</a></span>
+                <Button type="submit" class="w-full"><Mail class="w-4 h-4" /> Register</Button>
             </div>
         </div>
         </CardContent>
