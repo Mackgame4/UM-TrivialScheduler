@@ -9,13 +9,15 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/stores/auth'
 
-const username = ref('')
+const email = ref('')
+const password = ref('')
 const router = useRouter()
 const auth = useAuth()
 
-const login = () => {
-    if (username.value) {
-        auth.login(username.value)
+const login = (event: Event) => {
+    event.preventDefault() // Evita recarregar a página
+    if (email.value && password.value) {
+        auth.login(email.value, password.value)
         router.push('/dashboard')
     }
 }
@@ -32,23 +34,28 @@ defineEmits(['toggle-auth']);
             </div>
         </CardHeader>
         <CardContent>
-        <form class="grid gap-5 mt-4 px-7">
-            <div class="grid gap-2">
-                <Label for="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required v-model="username" />
-            </div>
-            <div class="grid gap-2">
-                <div class="flex items-center">
-                    <Label for="password">Password</Label>
-                    <a href="#" class="ml-auto inline-block text-xs underline">{{ $t('login.forgotPassword') }}</a>
+            <form @submit="login" class="grid gap-5 mt-4 px-7">
+                <div class="grid gap-2">
+                    <Label for="email">Email</Label>
+                    <Input id="email" type="email" placeholder="m@example.com" required v-model="email" />
                 </div>
-                <Input id="password" type="password" placeholder="************" required />
-            </div>
-            <div class="grid gap-1.5">
-                <span class="mt-4 text-center text-sm">{{ $t('login.dontHaveAccount') }} <a href="#" class="underline" @click="$emit('toggle-auth')">Sign up</a></span>
-                <Button type="submit" class="w-full" @click="login"><Mail class="w-4 h-4" /> Login</Button>
-            </div>
-        </form>
+                <div class="grid gap-2">
+                    <div class="flex items-center">
+                        <Label for="password">Password</Label>
+                        <a href="#" class="ml-auto inline-block text-xs underline">{{ $t('login.forgotPassword') }}</a>
+                    </div>
+                    <Input id="password" type="password" placeholder="●●●●●●●●●●●●" required v-model="password" />
+                </div>
+                <div class="grid gap-1.5">
+                    <span class="mt-4 text-center text-sm">
+                        {{ $t('login.dontHaveAccount') }} 
+                        <a href="#" class="underline" @click="$emit('toggle-auth')">Sign up</a>
+                    </span>
+                    <Button type="submit" class="w-full">
+                        <Mail class="w-4 h-4" /> Login
+                    </Button>
+                </div>
+            </form>
         </CardContent>
     </Card>
 </template>

@@ -6,7 +6,7 @@ const router = useRouter()
 const auth = useAuth()
 
 // If user not logged in, redirect to login page (Prevent unauthorized access to dashboard)
-if (!auth.user) {
+if (!auth.user?.isLoggedIn) {
   router.push('/')
 }
 </script>

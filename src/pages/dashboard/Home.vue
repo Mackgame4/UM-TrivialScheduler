@@ -15,7 +15,7 @@ const logout = () => {
 
 <template>
     <div>
-        <p v-if="auth.user">Logged in as: {{ auth.user.name }}</p>
+        <p v-if="auth.user">Logged in as: {{ auth.user.email }}</p>
         <button v-if="auth.user" @click="logout">Logout</button>
     </div>
 </template>

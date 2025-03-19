@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button'
 <template>
     <nav>
         <RouterLink to="/dashboard">
-            <Button>Go to Home</Button>
+            <Button>Home</Button>
         </RouterLink>
         <RouterLink to="/">
-            <Button>Go to Login</Button>
+            <Button>Login</Button>
         </RouterLink>
     </nav>
 </template>

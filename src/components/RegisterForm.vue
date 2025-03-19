@@ -3,9 +3,18 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Mail } from 'lucide-vue-next'
+import { MailPlus } from 'lucide-vue-next'
+import { ref } from 'vue'
 
-defineEmits(['toggle-auth']);
+defineEmits(['toggle-auth'])
+
+const email = ref('')
+const password = ref('')
+
+const register = (event: Event) => {
+    event.preventDefault() // Evita recarregar a página
+    console.log('User registered:', email.value)
+}
 </script>
 
 <template>
@@ -17,20 +26,25 @@ defineEmits(['toggle-auth']);
             </div>
         </CardHeader>
         <CardContent>
-        <div class="grid gap-5 mt-4 px-7">
-            <div class="grid gap-2">
-                <Label for="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required />
-            </div>
-            <div class="grid gap-2">
-                <Label for="password">Password</Label>
-                <Input id="password" type="password" placeholder="************" required />
-            </div>
-            <div class="grid gap-1.5">
-                <span class="mt-4 text-center text-sm">{{ $t('login.alreadyHaveAccount') }} <a href="#" class="underline" @click="$emit('toggle-auth')">Login</a></span>
-                <Button type="submit" class="w-full"><Mail class="w-4 h-4" /> Register</Button>
-            </div>
-        </div>
+            <form @submit="register" class="grid gap-5 mt-4 px-7">
+                <div class="grid gap-2">
+                    <Label for="email">Email</Label>
+                    <Input id="email" type="email" placeholder="m@example.com" required v-model="email" />
+                </div>
+                <div class="grid gap-2">
+                    <Label for="password">Password</Label>
+                    <Input id="password" type="password" placeholder="●●●●●●●●●●●●" required v-model="password" />
+                </div>
+                <div class="grid gap-1.5">
+                    <span class="mt-4 text-center text-sm">
+                        {{ $t('login.alreadyHaveAccount') }} 
+                        <a href="#" class="underline" @click="$emit('toggle-auth')">Login</a>
+                    </span>
+                    <Button type="submit" class="w-full">
+                        <MailPlus class="w-4 h-4" /> Register
+                    </Button>
+                </div>
+            </form>
         </CardContent>
     </Card>
 </template>
