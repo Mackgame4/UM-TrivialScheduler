@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
 import { useAuth } from '@/stores/auth'
 
 const auth = useAuth()
@@ -16,6 +18,6 @@ const logout = () => {
 <template>
     <div>
         <p v-if="auth.user">Logged in as: {{ auth.user.email }}</p>
-        <button v-if="auth.user" @click="logout">Logout</button>
+        <Button v-if="auth.user" @click="logout">Logout</Button>
     </div>
 </template>

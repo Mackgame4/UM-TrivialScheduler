@@ -16,10 +16,6 @@ const router = createRouter({
           path: '',
           name: 'Home',
           component: () => import('@/pages/dashboard/Home.vue')
-        },
-        {
-          path: 'about',
-          component: () => import('@/pages/dashboard/About.vue')
         }
       ]
     },

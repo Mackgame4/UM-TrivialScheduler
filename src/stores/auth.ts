@@ -33,7 +33,6 @@ export const useAuth = defineStore('auth', {
                 this.user = user
                 this.user.isLoggedIn = true
                 localStorage.setItem('user', JSON.stringify(user))
-                console.log('User logged in:', user)
             } else {
                 throw new Error('Invalid credentials')
             }
