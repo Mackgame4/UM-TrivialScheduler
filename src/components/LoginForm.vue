@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Mail } from 'lucide-vue-next'
+import { useToast } from '@/components/ui/toast/use-toast'
+const { toast } = useToast()
 
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -17,8 +19,16 @@ const auth = useAuth()
 const login = (event: Event) => {
     event.preventDefault() // Evita recarregar a página
     if (email.value && password.value) {
-        auth.login(email.value, password.value)
-        router.push('/dashboard')
+        try {
+            auth.login(email.value, password.value)
+            router.push('/dashboard')
+        } catch(e: any) {
+            toast({
+                title: e.message || 'An error occurred',
+                description: 'Please check your email and password.',
+                variant: 'destructive'
+            });
+        }
     }
 }
 

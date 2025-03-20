@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Toaster from '@/components/ui/toast/Toaster.vue'
+
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/stores/auth'
 
@@ -12,5 +14,6 @@ if (!auth.user?.isLoggedIn) {
 </script>
 
 <template>
+  <Toaster />
   <RouterView />
 </template>
