@@ -1,4 +1,4 @@
-# 📅 TrivialSchedule
+# 📅 TrivialScheduler
 A modern and lightweight scheduling app built with Vue 3 and Vite.
 
 ## 🚀 Features
@@ -55,7 +55,7 @@ You can customize the UI components via the `shadcn` configuration. To modify st
 
 ## 📜 Authors
 
-A104365 - Fabio Magalhaes
-A104537 - Afonso Pedreira
-AXXXXXX - Name
-AXXXXXX - Name
+- A104365 - Fabio Magalhaes
+- A104537 - Afonso Pedreira
+- AXXXXXX - Name
+- AXXXXXX - Name
