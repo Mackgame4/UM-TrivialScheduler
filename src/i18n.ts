@@ -6,6 +6,7 @@ export const localeNames: Record<string, string> = {
 };
 
 const i18n = createI18n({
+    legacy: false,
     locale: 'pt',
     fallbackLocale: 'en',
     messages: {

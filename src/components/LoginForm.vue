@@ -11,6 +11,9 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/stores/auth'
 
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 const email = ref('')
 const password = ref('')
 const router = useRouter()
@@ -52,13 +55,13 @@ defineEmits(['toggle-auth']);
                 <div class="grid gap-2">
                     <div class="flex items-center">
                         <Label for="password">Password</Label>
-                        <a href="#" class="ml-auto inline-block text-xs underline">{{ $t('login.forgotPassword') }}</a>
+                        <a href="#" class="ml-auto inline-block text-xs underline">{{ t('login.forgotPassword') }}</a>
                     </div>
                     <Input id="password" type="password" placeholder="●●●●●●●●●●●●" required v-model="password" />
                 </div>
                 <div class="grid gap-1.5">
                     <span class="mt-4 text-center text-sm">
-                        {{ $t('login.dontHaveAccount') }} 
+                        {{ t('login.dontHaveAccount') }} 
                         <a href="#" class="underline" @click="$emit('toggle-auth')">Sign up</a>
                     </span>
                     <Button type="submit" class="w-full">

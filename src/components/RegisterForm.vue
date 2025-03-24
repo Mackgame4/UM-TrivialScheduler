@@ -6,6 +6,9 @@ import { Label } from '@/components/ui/label'
 import { MailPlus } from 'lucide-vue-next'
 import { ref } from 'vue'
 
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 defineEmits(['toggle-auth'])
 
 const email = ref('')
@@ -37,7 +40,7 @@ const register = (event: Event) => {
                 </div>
                 <div class="grid gap-1.5">
                     <span class="mt-4 text-center text-sm">
-                        {{ $t('login.alreadyHaveAccount') }} 
+                        {{ t('login.alreadyHaveAccount') }} 
                         <a href="#" class="underline" @click="$emit('toggle-auth')">Login</a>
                     </span>
                     <Button type="submit" class="w-full">

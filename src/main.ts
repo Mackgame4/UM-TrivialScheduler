@@ -5,7 +5,6 @@ import router from '@/router';
 import i18n from '@/i18n';
 import './assets/index.css'
 
-
 const pinia = createPinia()
 const app = createApp(App)
 
