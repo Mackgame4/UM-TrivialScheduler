@@ -56,6 +56,6 @@ You can customize the UI components via the `shadcn` configuration. To modify st
 ## 📜 Authors
 
 A104365 - Fabio Magalhaes
-AXXXXXX - Name
+A104537 - Afonso Pedreira
 AXXXXXX - Name
 AXXXXXX - Name
