@@ -1,13 +1,33 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Home, Table, Bell, User, List } from 'lucide-vue-next';
+import { Home, Table, Bell, User, List, LogOut } from 'lucide-vue-next';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 import { useAuth } from '@/stores/auth'
+
 const auth = useAuth()
+
 const getUniqueAvatar = (name: string) => {
     const api = 'https://api.dicebear.com/9.x/adventurer/svg?seed='
     return `${api}${name}`
+}
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const logout = () => {
+    auth.logout()
+    router.push('/')
 }
 </script>
 
@@ -43,10 +63,36 @@ const getUniqueAvatar = (name: string) => {
                         UCs
                     </Button>
                 </nav>
-                <Avatar>
-                    <AvatarImage :src="getUniqueAvatar(auth.user?.email || 'trivialscheduler')" />
-                    <AvatarFallback>TS</AvatarFallback>
-                </Avatar>
+                <DropdownMenu>
+                    <DropdownMenuTrigger as-child>
+                    <Button variant="ghost" class="relative h-8 w-8 rounded-full">
+                        <Avatar>
+                            <AvatarImage :src="getUniqueAvatar(auth.user?.email || 'trivialscheduler')" />
+                            <AvatarFallback>TS</AvatarFallback>
+                        </Avatar>
+                    </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent class="w-56" align="end">
+                    <DropdownMenuLabel class="font-normal flex">
+                        <div class="flex flex-col space-y-1">
+                        <p class="text-sm font-medium leading-none">
+                            TrivialScheduler
+                        </p>
+                        <p class="text-xs leading-none text-muted-foreground">
+                            {{ auth.user?.email }}
+                        </p>
+                        </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem class="text-red-600" @click="logout">
+                        <LogOut class="w-4 h-4" /> Log out
+                    </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </div>
         </div>
     </div>
