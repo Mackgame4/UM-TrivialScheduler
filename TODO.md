@@ -1,0 +1,1 @@
+- [ ] Maybe add estantes T/TP, mover o codigo da uc para dentro dos detalhes e mostrar nesses detalhes o turno a que horas é e a sala
